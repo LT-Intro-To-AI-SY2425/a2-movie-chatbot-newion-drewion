@@ -7,7 +7,7 @@ def match(pattern: List[str], source: List[str]) -> List[str]:
     % matches a sequence of zero or more words and _ matches any single word
 
     Args:
-        pattern - a pattern using to % and/or _ to extract words from the source
+        pattern - a pattern using % and/or _ to extract words from the source
         source - a phrase represented as a list of words (strings)
 
     Returns:
@@ -18,33 +18,33 @@ def match(pattern: List[str], source: List[str]) -> List[str]:
     pind = 0  # current index we are looking at in pattern list
     result: List[str] = []  # to store substitutions we will return if matched
 
-    # keep checking as long as we haven't hit the end of either pattern or source while
-    # pind is still a valid index OR sind is still a valid index (valid index means that
-    # the index is != to the length of the list)
-    while "FILL IN CONDITION HERE":
-        # your job is to fill out the body of this loop
+    while pind != len(pattern) or sind != len(source):
 
-        # you should delete the following line
-        return ["Not done yet :)"]
-
-        # 1) if we reached the end of the pattern but not source
-
-        # 2) if the current thing in the pattern is a %
-        # WARNING: this condition contains the bulk of the code for the assignment
-        # If you get stuck on this one, we encourage you to attempt the other conditions
-        #   and come back to this one afterwards
-
-        # 3) if we reached the end of the source but not the pattern
-
-        # 4) if the current thing in the pattern is an _
-
-        # 5) if the current thing in the pattern is the same as the current thing in the
-        # source
-
-        # 6) else : this will happen if none of the other conditions are met it
-        # indicates the current thing it pattern doesn't match the current thing in
-        # source
-
+        if pind == len(pattern):
+            return None
+        elif pattern[pind] == "%":
+            if pind == len(pattern) - 1:
+                return result + [" ".join(source[sind:])]
+            else:
+                tempAdd = ""
+                pind += 1
+                while source[sind] != pattern[pind]:
+                    tempAdd += " " + source[sind]
+                    sind += 1
+                    if sind == len(source):
+                        return None
+                result.append(tempAdd.strip())
+        elif sind == len(source): 
+            return None
+        elif pattern[pind] == "_":
+            result.append(source[sind].strip())
+            pind += 1
+            sind += 1
+        elif pattern[pind] == source[sind]:
+            pind += 1
+            sind += 1
+        elif pattern[pind] != source[sind]:
+            return None 
     return result
 
 
