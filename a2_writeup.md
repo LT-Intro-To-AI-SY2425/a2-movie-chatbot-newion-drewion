@@ -13,8 +13,11 @@ This assignment is about learning and applying the while loop and iterating thro
 ## Reflection Questions
 1. What was difficult for you while completing the match function?
 
-
+The part when the pattern had %, just because it took an extra "container" variable for words from source matched by %. Also, the .strip method was new for me. 
 
 2. Explain how you could use the match function for extracting information from a movie database.
 
+We can change x, y, and z to be strings of movie information that gets output depending on % and _, which could be changed to the user's input depending on what format they write the message in. 
+
+For example, the source could be sometihng like ["The Martian", "Matt Damon", "2015"] and the pattern could be an input like ["%", "Matt DAmon", "%"].
 
